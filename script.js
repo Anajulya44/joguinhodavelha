@@ -41,9 +41,15 @@ function handleCellClick(event) {
         statusElement.textContent = `Jogador ${currentPlayer} venceu!`;
         gameActive = false;
         updateScore(currentPlayer);
+        
+        // Reinicia o jogo após 2 segundos
+        setTimeout(restartGame, 500);
     } else if (isBoardFull()) {
         statusElement.textContent = 'Empate!';
         gameActive = false;
+        
+        // Reinicia o jogo após 2 segundos
+        setTimeout(restartGame, 500);
     } else {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         statusElement.textContent = `É a vez do jogador ${currentPlayer}`;
@@ -95,5 +101,6 @@ function restartGame() {
     statusElement.textContent = `É a vez do jogador ${currentPlayer}`;
 }
 
+// Adiciona o evento de clique ao botão de reiniciar
 restartButton.addEventListener('click', restartGame);
 createBoard();
